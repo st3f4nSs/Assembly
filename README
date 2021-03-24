@@ -1,0 +1,42 @@
+Stroescu Tudor Stefan - 325CC - Tema 2 Iocla
+
+FUNCTIA:  void otp(char *ciphertext, char *plaintext, char *key, int length)
+	-  am parcurs cu un contor cele 2 siruri si am facut XOR intre 2 caractere.
+	-  am stocat fiecare caracter rezultat in ciphertext.
+
+
+FUNCTIA: void caesar(char *ciphertext, char *plaintext, int key, int length)
+	- iteram prin plaintext si la fiecare litera adaugam valoarea key.
+	- daca valoarea rezultatului depaseste 122 (litera mica), sau 65) atunci
+		vom face scaderi succesive pana vom obtine un caracter valid
+		c - 122 + 96( pt lowercase) si c - 90 + 64 (pt uppercase).
+
+
+FUNCTIA: void vigenere(char *ciphertext, char *plaintext, int plaintext_len, char *key, int key_len)
+	-  iteram prin plaintext si prin key. Daca e litera adaugam la caracterul din plaintext caracterul 
+		din key apoi scadem 122, adunam 97 si scadem 1 (pentru lowercase) si scadem 90, adunam
+		65 si scadem 1 (pentru uppercase).
+	-  tinem cont daca am depasit dimensiunea key-ului. Daca am depasit reinitializam cu 0.
+	- adaugam caracterul obtinut la rezultat
+
+
+FUNCTIA: void my_strstr(int *substr_index, char *haystack, char *needle, int haystack_len, int needle_len);
+	- parcurgem sirul haystack.
+	- daca haystack[index_curent] este egal cu primul caracter din needle (needle[0]) vom incepe sa comparam
+		de la index_curent in haystack si de la 0 in needle. Daca terminam de parcurs sirul needle inseamna
+		ca am gasit prima aparitie a sirului needle in haystack. 
+	- stocam indexul in *substr_index. 
+
+
+FUNCTIA: void bin_to_hex(char *hexa_value, char *bin_sequence, int length);
+	- verificam daca exista reminder( o secventa de biti != 4)
+	- daca exista:
+		- parcurgem bitii din reminder. Daca avem bit de 1 shiftam la stanga cu
+			4 - index_reminder_biti - 1 si adaugam valoarea la suma, altfel adaugam
+			0 la suma.
+		- adaugam suma in vectorul rezultat.
+	- daca nu exista impartim in secvente de 4 biti, le parcurgem si vom shifta si adauga
+		la suma ca mai sus daca bitii sunt 1, apoi adaugam suma in vectorul rezultat.
+	- tinem cont daca valoarea sumei este > 9 sau nu.
+		- daca e mai mica sau egala cu 9 adaugam sum + 48(cifra).
+		- altfel adaugam sum + 55( litera mare).
